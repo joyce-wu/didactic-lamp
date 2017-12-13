@@ -17,7 +17,14 @@ var distance = function (x0, y0, x1, y1) {
 };
 
 var findIt = function(e) {
-  if(distance(e.X, e.Y, x0, y0) == 0){
+  var dist = distance(event.pageX, event.pageY, targetX, targetY);
+  if(dist == 0){
+    box.setAttribute("style", "background-color: rgb(0,0,0)");
+  }else{
+    console.log(dist);
+    var shade = 225 - dist/225.0; 
+    console.log(shade);
+    box.setAttribute("style", "background-color: rgb("+shade+","+shade+","+shade+")");
   }
 };
 
