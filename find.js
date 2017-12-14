@@ -30,7 +30,7 @@ var max_dist = function(){
   var upper_right = distance(targetX, targetY, boxWidth, 0);
   var lower_left = distance(targetX, targetY, 0, boxHeight);
   var lower_right = distance(targetX, targetY, boxWidth, boxHeight);
-  return Math.max(upper_right, upper_left, low er_left, lower_right);
+  return Math.max(upper_right, upper_left, lower_left, lower_right);
 };
 
 //paces the image at the location
@@ -45,6 +45,7 @@ var placeImage = function(){
 
 //checks mouse position and changes background color
 var findIt = function(e) {
+  console.log("working");
     var dist = distance(event.pageX, event.pageY, targetX, targetY);
     var max_d = max_dist();
     if(dist < 20){
