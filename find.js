@@ -1,5 +1,5 @@
 /**
-Team Furry Chainsaw
+Team Didactic Lamp
 Alessandro Cartegni & Joyce Wu
 SoftDev1 pd7
 HW17 -- Moo?
@@ -30,7 +30,7 @@ var max_dist = function(){
   var upper_right = distance(targetX, targetY, boxWidth, 0);
   var lower_left = distance(targetX, targetY, 0, boxHeight);
   var lower_right = distance(targetX, targetY, boxWidth, boxHeight);
-  return Math.max(upper_right, upper_left, lower_left, lower_right);
+  return Math.max(upper_right, upper_left, low er_left, lower_right);
 };
 
 //paces the image at the location
@@ -52,7 +52,7 @@ var findIt = function(e) {
     }else{
 	var shade = parseInt(255 - (255 * dist / max_d));
 	box.setAttribute("style", "background-color: rgb("+shade+","+shade+","+shade+")");
-    }  
+    }
 };
 
 //checks for mouse click on right spot, then shows image
