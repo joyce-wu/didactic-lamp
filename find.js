@@ -1,9 +1,17 @@
+/**
+Team Furry Chainsaw
+Alessandro Cartegni & Joyce Wu
+SoftDev1 pd7
+HW17 -- Moo?
+2017-12-13
+**/
+
+
 var box = document.getElementById("box");
 var boxHeight = box.offsetHeight;
 var boxWidth = box.offsetWidth;
 
-//hardcode target as center
-//randomized
+//randomized target
 var targetX = Math.random() * boxWidth;
 var targetY = Math.random() * boxHeight;
 
@@ -25,27 +33,36 @@ var max_dist = function(){
   return Math.max(upper_right, upper_left, lower_left, lower_right);
 };
 
+//paces the image at the location
 var placeImage = function(){
-  console.log("image");
-  console.log(targetX + " " + targetY);
+    //console.log("image");
+    //console.log(targetX + " " + targetY);
   var image = document.createElement("img");
   image.src = "https://cdn.pixabay.com/photo/2017/01/31/16/57/linux-2025536_1280.png";
-  image.setAttribute("style", "position:absolute;TOP:"+targetY+";LEFT:"+targetX+";width:20px;height:30px;");
+  image.setAttribute("style", "position:absolute;top:"+(targetY-55)+"px;left:"+(targetX-45)+"px;height:110px;width:90px;");
   box.appendChild(image);
-}
-
-var findIt = function(e) {
-  var dist = distance(event.pageX, event.pageY, targetX, targetY);
-  var max_d = max_dist();
-  if(dist < 20){
-    box.setAttribute("style", "background-color: rgb(255,255,255)");
-    placeImage();
-  }else{
-    var shade = parseInt(255 - (255 * dist / max_d));
-    box.setAttribute("style", "background-color: rgb("+shade+","+shade+","+shade+")");
-  }
 };
 
+//checks mouse position and changes background color
+var findIt = function(e) {
+    var dist = distance(event.pageX, event.pageY, targetX, targetY);
+    var max_d = max_dist();
+    if(dist < 20){
+	box.setAttribute("style", "background-color: rgb(255,255,255)");
+    }else{
+	var shade = parseInt(255 - (255 * dist / max_d));
+	box.setAttribute("style", "background-color: rgb("+shade+","+shade+","+shade+")");
+    }  
+};
 
+//checks for mouse click on right spot, then shows image
+var foundIt = function(e) {
+    var dist = distance(event.pageX, event.pageY, targetX, targetY);
+    if(dist < 20){
+	box.setAttribute("style", "background-color: rgb(255,255,255)");
+	placeImage();
+    }
+};
 
 box.addEventListener("mousemove", findIt);
+box.addEventListener("click", foundIt);
